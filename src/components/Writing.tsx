@@ -27,14 +27,7 @@ function EssayEntry({ w }: EssayProps) {
       </div>
       {w.imageId && (
         <div className="essay-image">
-          {/* @ts-ignore custom element */}
-          <image-slot
-            id={w.imageId}
-            src={`/images/${w.imageId}.jpg`}
-            shape="rect"
-            fit="cover"
-            placeholder={w.imagePlaceholder || 'drop an image here'}
-          />
+          <img src={`/images/${w.imageId}.jpg`} alt={w.imagePlaceholder || ''} />
         </div>
       )}
       {open && (
