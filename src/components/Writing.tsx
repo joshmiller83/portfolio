@@ -27,10 +27,13 @@ function EssayEntry({ w }: EssayProps) {
       </div>
       {w.imageId && (
         <div className="essay-image">
-          <img
+          {/* @ts-ignore custom element */}
+          <image-slot
+            id={w.imageId}
             src={`/images/${w.imageId}.jpg`}
-            alt={w.imagePlaceholder || ''}
-            style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+            shape="rect"
+            fit="cover"
+            placeholder={w.imagePlaceholder || 'drop an image here'}
           />
         </div>
       )}
