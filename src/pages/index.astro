@@ -5,7 +5,6 @@ import WritingIsland from '../components/Writing';
 import { drupalcons } from '../data/drupalcons';
 import { podcasts } from '../data/podcasts';
 import { writing } from '../data/writing';
-import { modules } from '../data/modules';
 import { certs } from '../data/certs';
 ---
 
@@ -35,9 +34,7 @@ import { certs } from '../data/certs';
         <a href="#drupalcon">drupalcon</a>
         <a href="#speaking">podcasts</a>
         <a href="#writing">writing</a>
-        <a href="#contrib">contrib</a>
         <a href="#credentials">credentials</a>
-        <a href="#archive">archive</a>
       </nav>
     </div>
 
@@ -59,10 +56,10 @@ import { certs } from '../data/certs';
             Drupal contributor since 2007. Director of Web at the Urban Institute. On the core team for the <em style="font-style: italic; color: var(--accent);">official Drupal MCP module</em>. Spoken at most DrupalCons since 2014. Maintainer of about thirty contrib modules — most in Commerce.
           </p>
           <div class="hero-row">
-            <a href="https://drupal.org/u/joshmiller" target="_blank">drupal.org/u/joshmiller</a>
-            <a href="https://www.linkedin.com/in/josh3/recent-activity/all/" target="_blank">linkedin.com/in/josh3</a>
-            <a href="https://github.com/joshmiller83" target="_blank">github.com/joshmiller83</a>
-            <a href="https://urban.org/author/josh-miller" target="_blank">urban.org/author/josh-miller</a>
+            <a href="https://drupal.org/u/joshmiller" target="_blank" rel="noopener noreferrer">drupal.org/u/joshmiller</a>
+            <a href="https://www.linkedin.com/in/josh3/recent-activity/all/" target="_blank" rel="noopener noreferrer">linkedin.com/in/josh3</a>
+            <a href="https://github.com/joshmiller83" target="_blank" rel="noopener noreferrer">github.com/joshmiller83</a>
+            <a href="https://urban.org/author/josh-miller" target="_blank" rel="noopener noreferrer">urban.org/author/josh-miller</a>
             <span style="color: var(--ink-3);">·</span>
             <span style="color: var(--ink-3); font-size: 12px;">Washington, DC · UTC−5</span>
           </div>
@@ -74,7 +71,7 @@ import { certs } from '../data/certs';
             loading="eager"
           />
           <div class="hero-photo-cap">
-            <a href="https://youtu.be/MkmSpV2l_1k" target="_blank"><span class="accent">▸ Live MCP demo</span></a> · Pantheon booth · DrupalCon Chicago, May 2026
+            <a href="https://youtu.be/MkmSpV2l_1k" target="_blank" rel="noopener noreferrer"><span class="accent">▸ Live MCP demo</span></a> · Pantheon booth · DrupalCon Chicago, May 2026
           </div>
         </div>
       </div>
@@ -115,16 +112,12 @@ import { certs } from '../data/certs';
       </div>
       <div class="timeline">
         {drupalcons.map(c => (
-          <div class={`tl-row${c.featured ? ' featured' : ''}`}>
+          <a href={c.url} target="_blank" rel="noopener noreferrer" class={`tl-row${c.featured ? ' featured' : ''}`}>
             <div class="tl-year">{c.year}</div>
             <div class="tl-city">{c.city}</div>
             <div class="tl-title">{c.talk}</div>
-            <div class={`tl-rec${c.rec === 'none' ? ' none' : ''}`}>
-              {c.url
-                ? <a href={c.url} target="_blank" rel="noopener noreferrer">{c.rec === 'youtube' ? '▸ watch' : '▸ session'}</a>
-                : 'not recorded'}
-            </div>
-          </div>
+            <div class="tl-rec">{c.rec === 'youtube' ? '▸ watch' : '▸ session'}</div>
+          </a>
         ))}
       </div>
       <div style="font-family: var(--font-mono); font-size: 11px; color: var(--ink-3); margin-top: 12px; line-height: 1.6;">
@@ -158,90 +151,10 @@ import { certs } from '../data/certs';
     <!-- Dingbat -->
     <div class="dingbat" aria-hidden="true">⁂</div>
 
-    <!-- §05 Contrib -->
-    <section id="contrib">
-      <div class="section-head">
-        <div class="section-num">§ 05</div>
-        <h2 class="section-title">drupal.org</h2>
-        <div class="section-sub">modules · documentation · mentorship — drupal.org/u/joshmiller</div>
-      </div>
-
-      <div class="body-grid">
-        <div class="gutter">
-          <div><span class="k">modules</span></div>
-          <div>maintained</div>
-          <div>~30 total</div>
-        </div>
-        <div>
-          <div class="modules-grid">
-            {modules.map(m => (
-              <a href={m.url || 'https://www.drupal.org/u/joshmiller'} class="mod" style="text-decoration: none;" target="_blank" rel="noopener noreferrer">
-                <span class="mod-name">{m.name}</span>
-                <span class="mod-meta">{m.usage}</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <div style="height: 28px;"></div>
-
-      <div class="body-grid">
-        <div class="gutter">
-          <div><span class="k">docs</span></div>
-          <div>guides on</div>
-          <div>drupal.org</div>
-        </div>
-        <div>
-          <div class="entries">
-            <div class="entry">
-              <div class="entry-meta-l">2018</div>
-              <div>
-                <div class="entry-title"><a href="https://www.drupal.org/docs/8/modules/commerce/commerce-2-user-guide">Setting up Drupal Commerce for B2B</a></div>
-                <div class="entry-sub">drupal.org documentation</div>
-              </div>
-              <div class="entry-meta-r">▸ read</div>
-            </div>
-            <div class="entry">
-              <div class="entry-meta-l">2019</div>
-              <div>
-                <div class="entry-title"><a href="https://www.drupal.org/docs/contributed-modules/commerce-recurring-framework">Recurring billing patterns in Commerce 2</a></div>
-                <div class="entry-sub">drupal.org documentation</div>
-              </div>
-              <div class="entry-meta-r">▸ read</div>
-            </div>
-            <div class="entry">
-              <div class="entry-meta-l">2024</div>
-              <div>
-                <div class="entry-title"><a href="https://www.drupal.org/project/mcp_drupal">Adding MCP server endpoints to a Drupal module</a></div>
-                <div class="entry-sub">drupal.org documentation (in review)</div>
-              </div>
-              <div class="entry-meta-r">▸ read</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div style="height: 28px;"></div>
-
-      <div class="body-grid">
-        <div class="gutter">
-          <div><span class="k">mentor</span></div>
-          <div>DrupalCon</div>
-          <div>since 2014</div>
-        </div>
-        <div>
-          <p style="font-size: 15px; color: var(--ink-2); margin: 0; max-width: 680px;">
-            DrupalCon mentor every cycle since 2014. First-time speaker coaching, contribution-sprint onboarding, and pairing newcomers with established maintainers. Twelve years and counting — this is the part of the job I would do anyway.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- §06 Credentials (reverse) -->
+    <!-- §05 Credentials (reverse) -->
     <section id="credentials" class="reverse">
       <div class="section-head">
-        <div class="section-num">§ 06</div>
+        <div class="section-num">§ 05</div>
         <h2 class="section-title">Credentials</h2>
         <div class="section-sub">20 active certifications · weighted toward AI governance, MCP, and federal-compliance work</div>
       </div>
@@ -270,49 +183,21 @@ import { certs } from '../data/certs';
       </div>
     </section>
 
-    <!-- §07 Archive -->
-    <section id="archive">
-      <div class="section-head">
-        <div class="section-num">§ 07</div>
-        <h2 class="section-title">Archive</h2>
-        <div class="section-sub">work that existed publicly but no longer does — included for completeness</div>
-      </div>
-      <div class="archive">
-        <div class="archive-tag">▲ no longer publicly available</div>
-        <h3>Drupal Commerce video series · Commerce Guys (2012–2016)</h3>
-        <p>
-          During my four years at Commerce Guys — the company that originally built Drupal Commerce — I produced a substantial body of training video on Commerce installation, configuration, theming, and payment-gateway integration. By view-count it was the most-watched work I've made, by some margin.
-        </p>
-        <p>
-          The videos were taken down when Commerce Guys was sold. I don't have a working link, and I'm not going to fabricate one. What existed:
-        </p>
-        <ul>
-          <li>~40 screencasts on Commerce Kickstart 1.x and 2.x</li>
-          <li>A short course on building custom payment gateways</li>
-          <li>Conference recap recordings from Commerce-track DrupalCons</li>
-          <li>Drupal Commerce on YouTube · <span class="struck">youtube.com/commerceguys/videos</span></li>
-        </ul>
-        <div class="footnote">
-          Mentioned here because it's a real part of the record, not because it's a live asset. Happy to talk about specific episodes during interviews — I remember most of them.
-        </div>
-      </div>
-    </section>
-
     <!-- Colophon -->
     <footer class="colophon">
       <div>
         <h4>Contact</h4>
-        <p><a href="https://www.linkedin.com/in/josh3/" target="_blank">LinkedIn DM</a> · preferred</p>
+        <p><a href="https://www.linkedin.com/in/josh3/" target="_blank" rel="noopener noreferrer">LinkedIn DM</a> · preferred</p>
         <p>Indianapolis, IN · UTC−5</p>
         <p>open to: speaking, consulting, new roles</p>
       </div>
       <div>
         <h4>Identifiers</h4>
-        <p><a href="https://drupal.org/u/joshmiller" target="_blank">drupal.org/u/joshmiller</a></p>
-        <p><a href="https://github.com/joshmiller83" target="_blank">github.com/joshmiller83</a></p>
-        <p><a href="https://www.linkedin.com/in/josh3/recent-activity/all/" target="_blank">linkedin.com/in/josh3</a></p>
-        <p><a href="https://twitter.com/MrJoshMiller" target="_blank">twitter.com/MrJoshMiller</a></p>
-        <p><a href="https://urban.org/author/josh-miller" target="_blank">urban.org/author/josh-miller</a></p>
+        <p><a href="https://drupal.org/u/joshmiller" target="_blank" rel="noopener noreferrer">drupal.org/u/joshmiller</a></p>
+        <p><a href="https://github.com/joshmiller83" target="_blank" rel="noopener noreferrer">github.com/joshmiller83</a></p>
+        <p><a href="https://www.linkedin.com/in/josh3/recent-activity/all/" target="_blank" rel="noopener noreferrer">linkedin.com/in/josh3</a></p>
+        <p><a href="https://twitter.com/MrJoshMiller" target="_blank" rel="noopener noreferrer">twitter.com/MrJoshMiller</a></p>
+        <p><a href="https://urban.org/author/josh-miller" target="_blank" rel="noopener noreferrer">urban.org/author/josh-miller</a></p>
       </div>
       <div>
         <h4>Colophon</h4>
@@ -323,7 +208,5 @@ import { certs } from '../data/certs';
     </footer>
 
   </div>
-
-
 </body>
 </html>

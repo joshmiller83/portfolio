@@ -32,15 +32,11 @@ export default function Podcasts({ podcasts }: Props) {
       </div>
       <div className="entries">
         {filtered.map((p, i) => (
-          <div key={i} className="entry">
+          <a key={i} className="entry podcast-entry" href={p.url} target="_blank" rel="noopener noreferrer">
             <div className="entry-meta-l">{p.show} · {p.ep}</div>
-            <div>
-              <div className="entry-title">
-                <a href={p.url} target="_blank" rel="noopener noreferrer">{p.title}</a>
-              </div>
-            </div>
+            <div className="entry-title">{p.title}</div>
             <div className="entry-meta-r">▸ listen</div>
-          </div>
+          </a>
         ))}
       </div>
     </>
