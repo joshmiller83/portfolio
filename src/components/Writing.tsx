@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react';
 import type { WritingEntry } from '../data/writing';
+import { smartquotes as sq } from '../utils/smartquotes';
 
 interface EssayProps {
   w: WritingEntry;
@@ -20,10 +21,10 @@ function EssayEntry({ w }: EssayProps) {
           </>
         )}
       </div>
-      <h3 className="essay-title">{w.title}</h3>
+      <h3 className="essay-title">{sq(w.title)}</h3>
       <div className="essay-quote">
         <span className="essay-quote-mark">"</span>
-        <div className="essay-quote-text">{w.quote}</div>
+        <div className="essay-quote-text">{w.quote && sq(w.quote)}</div>
       </div>
       {w.imageId && (
         <div className="essay-image">
@@ -32,7 +33,7 @@ function EssayEntry({ w }: EssayProps) {
       )}
       {open && (
         <div className="essay-body">
-          {w.body!.split(/\n\n+/).map((para, i) => <p key={i}>{para}</p>)}
+          {w.body!.split(/\n\n+/).map((para, i) => <p key={i}>{sq(para)}</p>)}
         </div>
       )}
       <div className="essay-foot">
@@ -60,7 +61,7 @@ function SimpleEntry({ w }: EssayProps) {
       <div>
         <div className="entry-title">
           <a href={w.url || '#'} target={w.url ? '_blank' : undefined} rel={w.url ? 'noopener noreferrer' : undefined}>
-            {w.title}
+            {sq(w.title)}
           </a>
         </div>
         <div className="entry-sub">{w.venue}</div>
