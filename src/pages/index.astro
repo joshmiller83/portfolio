@@ -6,6 +6,11 @@ import { drupalcons } from '../data/drupalcons';
 import { podcasts } from '../data/podcasts';
 import { writing } from '../data/writing';
 import { certs } from '../data/certs';
+import { career } from '../data/career';
+import { projects } from '../data/projects';
+
+const certCount = certs.reduce((n, g) => n + g.items.length, 0);
+const credentialGroups = [...career, ...certs];
 ---
 
 <!doctype html>
@@ -13,8 +18,8 @@ import { certs } from '../data/certs';
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Josh Miller — DevRel Portfolio</title>
-  <meta name="description" content="Josh Miller — Drupal contributor, Director of Web at the Urban Institute, MCP module core team member. DevRel portfolio." />
+  <title>Josh Miller · Portfolio</title>
+  <meta name="description" content="Josh Miller. Engineering leader, web platform, Drupal and open source, AI tooling. Directed the Urban Institute web team 2021 to 2026. Core team, official Drupal MCP module. Drupal contributor since 2007." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -27,10 +32,11 @@ import { certs } from '../data/certs';
       <div>
         <span style="color: var(--ink-2); font-weight: 500;">portfolio.joshnliz.com</span>
         <span style="margin: 0 10px; color: var(--rule);">/</span>
-        <span>v1 · May 2026</span>
+        <span>v2 · Sep 2026</span>
       </div>
       <nav class="nav">
         <a href="#now">now</a>
+        <a href="#work">work</a>
         <a href="#drupalcon">drupalcon</a>
         <a href="#speaking">podcasts</a>
         <a href="#writing">writing</a>
@@ -45,18 +51,21 @@ import { certs } from '../data/certs';
           <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 22px; flex-wrap: wrap;">
             <span class="status-pill">
               <span class="status-dot"></span>
-              currently: shipping MCP for Drupal
+              currently: consulting · shipping MCP for Drupal
             </span>
           </div>
           <h1>Josh Miller</h1>
           <p class="lede">
-            Drupal contributor since 2007. Director of Web at the Urban Institute. On the core team for the <em style="font-style: italic; color: var(--accent);">official Drupal MCP module</em>. Spoken at most DrupalCons since 2014. Maintainer of about thirty contrib modules — most in Commerce.
+            Drupal contributor since 2007. Directed the web team at the Urban Institute from 2021 to 2026. On the core team for the <em style="font-style: italic; color: var(--accent);">official Drupal MCP module</em>. Speaking at DrupalCon since 2014. Now consulting independently, finishing an M.S. at Purdue, and open to engineering leadership roles.
           </p>
           <div class="hero-row">
             <a href="https://drupal.org/u/joshmiller" target="_blank" rel="noopener noreferrer">drupal.org</a>
             <a href="https://www.linkedin.com/in/josh3/recent-activity/all/" target="_blank" rel="noopener noreferrer">linkedin.com</a>
             <a href="https://github.com/joshmiller83" target="_blank" rel="noopener noreferrer">github.com</a>
             <a href="https://urban.org/author/josh-miller" target="_blank" rel="noopener noreferrer">urban.org</a>
+          </div>
+          <div class="hero-facts">
+            30+ contrib modules, most in Commerce<span class="sep">·</span>11 Drupal core commits<span class="sep">·</span>Drupal Association member since 2012<span class="sep">·</span>DrupalCon mentor since 2014<span class="sep">·</span>three drupal.org documentation guides
           </div>
         </div>
         <div class="hero-photo">
@@ -66,7 +75,7 @@ import { certs } from '../data/certs';
             loading="eager"
           />
           <div class="hero-photo-cap">
-            <a href="https://youtu.be/MkmSpV2l_1k" target="_blank" rel="noopener noreferrer"><span class="accent">▸ Live MCP demo</span></a> · Pantheon booth · DrupalCon Chicago, May 2026
+            <a href="https://youtu.be/MkmSpV2l_1k" target="_blank" rel="noopener noreferrer"><span class="accent">▸ Live MCP demo</span></a> · Pantheon booth · DrupalCon Chicago, March 2026
           </div>
         </div>
       </div>
@@ -77,31 +86,53 @@ import { certs } from '../data/certs';
       <div class="section-head">
         <div class="section-num">§ 01</div>
         <h2 class="section-title">Right now</h2>
-        <div class="section-sub">three live threads — not a roadmap, not a wishlist</div>
+        <div class="section-sub">three live threads, not a roadmap</div>
       </div>
       <div class="now">
         <div class="now-cell">
           <div class="now-tag">this quarter</div>
-          <h3 class="now-h">Drupal MCP module — core team</h3>
-          <p class="now-p">On the team shipping the official Model Context Protocol module so AI clients can read and write Drupal sites through Anthropic's protocol. First release lands this summer.</p>
-        </div>
-        <div class="now-cell">
-          <div class="now-tag">this month</div>
-          <h3 class="now-h">DrupalCon Chicago 2026 follow-up</h3>
-          <p class="now-p">Following up on the Tim Lehnen fireside, the agentic interfaces breakout, and the MCP live demo at the Pantheon expo booth. Writing up the demo for those who couldn't attend.</p>
+          <h3 class="now-h">Drupal MCP module: stateless transport</h3>
+          <p class="now-p">On the core team for the official Model Context Protocol module, which lets AI clients read and act on Drupal sites. Current work is the move from the older stateful transport to the stateless spec, a real simplification for hosted environments like Pantheon, while the module merges into MCP Server. The 2.0 betas are shipping now.</p>
         </div>
         <div class="now-cell">
           <div class="now-tag">ongoing</div>
-          <h3 class="now-h">AI governance, in public</h3>
-          <p class="now-p">Posting on LinkedIn about MCP adoption, agentic UX for content systems, and what 'AI governance' actually means for editorial teams who can't afford to get this wrong.</p>
+          <h3 class="now-h">Independent consulting, and the next role</h3>
+          <p class="now-p">Designing, building, and migrating websites for clients as a sole proprietor after five years directing the Urban Institute’s web team. Open to engineering manager, platform, and consulting-delivery roles. LinkedIn DM is the fastest route.</p>
+        </div>
+        <div class="now-cell">
+          <div class="now-tag">this year</div>
+          <h3 class="now-h">Purdue M.S. and the PMP</h3>
+          <p class="now-p">Two classes from an M.S. in Technology, Leadership, and Innovation at Purdue, expected 2027, with a 4.0 so far. The coursework is people systems: leading teams, organizational change, and project integration. Sitting for the PMP exam in 2026.</p>
         </div>
       </div>
     </section>
 
-    <!-- §02 DrupalCon Timeline -->
-    <section id="drupalcon">
+    <!-- §02 Selected work -->
+    <section id="work">
       <div class="section-head">
         <div class="section-num">§ 02</div>
+        <h2 class="section-title">Selected work</h2>
+        <div class="section-sub">six things I built or ran at the Urban Institute and Acro Media, 2016 to 2026</div>
+      </div>
+      <div class="projects">
+        {projects.map(p => (
+          <article class="project">
+            <div class="project-meta">{p.org} · {p.years}</div>
+            <h3 class="project-h">{p.title}</h3>
+            <div class="project-stat">{p.stat}</div>
+            <p class="project-p">{p.body}</p>
+            {p.url && (
+              <a class="project-link" href={p.url} target="_blank" rel="noopener noreferrer">↗ {p.urlLabel || 'read more'}</a>
+            )}
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- §03 DrupalCon Timeline -->
+    <section id="drupalcon">
+      <div class="section-head">
+        <div class="section-num">§ 03</div>
         <h2 class="section-title">DrupalCon, 2014 → present</h2>
         <div class="section-sub">breakout, summit, and expo-booth sessions · ★ most recent</div>
       </div>
@@ -123,22 +154,22 @@ import { certs } from '../data/certs';
     <!-- Dingbat -->
     <div class="dingbat" aria-hidden="true">⁂</div>
 
-    <!-- §03 Podcasts -->
+    <!-- §04 Podcasts -->
     <section id="speaking">
       <div class="section-head">
-        <div class="section-num">§ 03</div>
+        <div class="section-num">§ 04</div>
         <h2 class="section-title">Podcasts &amp; conversations</h2>
-        <div class="section-sub">five Talking Drupal episodes · filter by topic</div>
+        <div class="section-sub">five Talking Drupal episodes, 2024 · filter by topic</div>
       </div>
       <PodcastsIsland podcasts={podcasts} client:load />
     </section>
 
-    <!-- §04 Writing -->
+    <!-- §05 Writing -->
     <section id="writing">
       <div class="section-head">
-        <div class="section-num">§ 04</div>
+        <div class="section-num">§ 05</div>
         <h2 class="section-title">Writing, in full</h2>
-        <div class="section-sub">recent LinkedIn essays — pull quote up top, click to read the rest in place</div>
+        <div class="section-sub">LinkedIn essays and earlier articles. Pull quote up top, click to read the rest in place.</div>
       </div>
       <WritingIsland writing={writing} client:load />
     </section>
@@ -146,15 +177,15 @@ import { certs } from '../data/certs';
     <!-- Dingbat -->
     <div class="dingbat" aria-hidden="true">⁂</div>
 
-    <!-- §05 Credentials (reverse) -->
+    <!-- §06 Credentials (reverse) -->
     <section id="credentials" class="reverse">
       <div class="section-head">
-        <div class="section-num">§ 05</div>
-        <h2 class="section-title">Credentials</h2>
-        <div class="section-sub">20 active certifications · weighted toward AI governance, MCP, and federal-compliance work</div>
+        <div class="section-num">§ 06</div>
+        <h2 class="section-title">Career &amp; credentials</h2>
+        <div class="section-sub">four employers, two Purdue degrees, {certCount} certifications · weighted toward AI governance, MCP, and federal-compliance work</div>
       </div>
 
-      {certs.map(group => (
+      {credentialGroups.map(group => (
         <div class="cert-group">
           <h3 class="cert-group-h">{group.group}</h3>
           <div class="cert-list">
@@ -179,7 +210,7 @@ import { certs } from '../data/certs';
       <div>
         <h4>Contact</h4>
         <p><a href="https://www.linkedin.com/in/josh3/" target="_blank" rel="noopener noreferrer">LinkedIn DM</a> · preferred</p>
-        <p>Indianapolis, IN · UTC−5</p>
+        <p>Indianapolis area · UTC−5</p>
         <p>open to: speaking, consulting, new roles</p>
       </div>
       <div>
